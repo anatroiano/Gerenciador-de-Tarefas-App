@@ -1,0 +1,47 @@
+<p-card header="Adicionar tarefa">
+    <form #tarefasForm="ngForm" (ngSubmit)="onSubmit()">
+        <div>
+            <p *ngFor="let error of errors">
+                {{ error }}
+            </p>
+        </div>
+
+        <br /> 
+
+        <p-floatLabel>
+            <input pInputText id="titulo" [(ngModel)]="tarefa.titulo" name="titulo" />
+            <label for="titulo">Título</label>
+        </p-floatLabel>
+
+        <br />  <br />
+
+        <p-floatLabel>
+            <input pInputText id="descricao" name="descricao" [(ngModel)]="tarefa.descricao">
+            <label for="descricao">Descrição</label>
+        </p-floatLabel>
+
+        <br /> <br />
+
+        <p-floatLabel>
+            <p-calendar 
+                [iconDisplay]="'input'" 
+                [showIcon]="true" 
+                inputId="dataConcluir" [(ngModel)]="tarefa.dataConcluir" name="dataConcluir" 
+                dateFormat="dd/mm/yy" 
+                dataType="string"/>
+            <label for="dataConcluir">Data de Vencimento</label>
+        </p-floatLabel>
+
+        <br />
+
+        <div class="card flex justify-content-center">
+            <p-button label="Adicionar" severity="help" type="submit"/>
+            <p-button label="Cancelar" [outlined]="true" severity="help" routerLink="/listar-tarefas"/>
+            
+        </div>
+    </form>
+</p-card>
+
+
+
+<!-- [(ngModel)]="value" -->
